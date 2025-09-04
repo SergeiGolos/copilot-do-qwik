@@ -1,65 +1,174 @@
-# Qwik City App ⚡️
+# Copilot Do Qwik ⚡️
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+A Qwik City application template integrated with GitHub Copilot agents for streamlined development workflows. This project demonstrates how to use Copilot to manage development tasks through GitHub issues and automatically deploy to GitHub Pages.
 
----
+## Features
+
+- 🚀 **Qwik Framework**: Lightning-fast web applications with resumable components
+- 🤖 **Copilot Agents**: Specialized AI agents for different development tasks
+- 📄 **GitHub Pages**: Automatic deployment with GitHub Actions
+- 🎨 **Tailwind CSS**: Modern styling with utility-first CSS framework
+- ⭐ **Star Repo Link**: Corner sticker linking back to the repository
+
+## Quick Start
+
+### Clone and Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/SergeiGolos/copilot-do-qwik.git
+   cd copilot-do-qwik
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser** to `http://localhost:5173`
+
+## Using Copilot Agents
+
+This template includes specialized Copilot agents that help with different aspects of development. Each agent has specific instructions and can be invoked through GitHub issues.
+
+### Available Agents
+
+- **write-code**: Implement small, safe code changes per existing design
+- **debug-code**: Reproduce, isolate, fix bugs and add regression tests
+- **design**: Turn requirements into technical design and documentation
+- **plan**: Break features into atomic, testable tasks
+- **design-test**: Produce testing plans and strategies
+- **review-code**: Review code changes for correctness and quality
+- **research**: Deep-dive on questions and gather findings
+- **bootstrap**: Create foundational documentation
+- **draw**: Visualize architecture and relationships
+- **journal**: Generate external documentation and summaries
+- **catalog**: Maintain library summaries
+
+### How to Use Agents
+
+1. **Create a GitHub Issue** in your repository
+2. **Add a System Prompt** section at the top of the issue body:
+   ```
+   - agent=<agent-key>
+   - instruction_file=.instructions/__<agent-key>.md
+   ```
+3. **Describe your task** in the issue body
+4. **Copilot will process** the issue using the specified agent
+
+Example for writing code:
+```
+- agent=write-code
+- instruction_file=.instructions/__write-code.md
+
+Please implement a new user authentication component with the following requirements...
+```
 
 ## Project Structure
 
-This project is using Qwik with [QwikCity](https://qwik.dev/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
-
-Inside your project, you'll see the following directory structure:
-
 ```
-├── public/
+├── .github/
+│   ├── workflows/
+│   │   └── deploy.yml          # GitHub Pages deployment workflow
+│   └── copilot-instructions.md # Agent instructions
+├── .instructions/              # Agent-specific instruction files
+├── public/                     # Static assets
+├── src/
+│   ├── components/             # Reusable components
+│   ├── routes/                 # Page routes
 │   └── ...
-└── src/
-    ├── components/
-    │   └── ...
-    └── routes/
-        └── ...
-```
-
-- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.dev/qwikcity/routing/overview/) for more info.
-
-- `src/components`: Recommended directory for components.
-
-- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
-
-## Add Integrations and deployment
-
-Use the `npm run qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.dev/qwikcity/guides/static-site-generation/).
-
-```shell
-npm run qwik add # or `yarn qwik add`
+├── package.json
+├── vite.config.ts              # Vite configuration with static adapter
+└── README.md
 ```
 
 ## Development
 
-Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
+### Available Scripts
 
-```shell
-npm start # or `yarn start`
+- `npm run dev` - Start development server with SSR
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run fmt` - Format code with Prettier
+
+### Building for Production
+
+The project is configured with Qwik's static adapter for GitHub Pages deployment:
+
+```bash
+npm run build
 ```
 
-> Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
+This generates static files in the `dist/` directory.
 
-## Preview
+## Deployment to GitHub Pages
 
-The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
+### Automatic Deployment
 
-```shell
-npm run preview # or `yarn preview`
-```
+The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys your application to GitHub Pages on every push to the `main` branch.
 
-## Production
+### Setup Steps
 
-The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
+1. **Enable GitHub Pages** in your repository:
+   - Go to Settings → Pages
+   - Set Source to "GitHub Actions"
 
-```shell
-npm run build # or `yarn build`
-```
+2. **Push to main branch**:
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+3. **Wait for deployment**:
+   - The workflow will run automatically
+   - Check the Actions tab for build status
+   - Your site will be available at: `https://<username>.github.io/<repository-name>`
+
+### Manual Deployment
+
+If you need to deploy manually:
+
+1. Build the project: `npm run build`
+2. The static files will be in the `dist/` directory
+3. You can deploy the `dist/` folder to any static hosting service
+
+## Customization
+
+### Modifying the Copilot Agents
+
+- Agent instructions are stored in `.instructions/` directory
+- Each agent has its own `.md` file with specific guidelines
+- Modify these files to customize agent behavior for your project
+
+### Styling
+
+- Uses Tailwind CSS for styling
+- Global styles in `src/global.css`
+- Component-specific styles can be added inline or via CSS modules
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test locally with `npm run dev`
+5. Submit a pull request
+
+## Resources
+
+- [Qwik Documentation](https://qwik.dev/)
+- [Qwik City Guide](https://qwik.dev/qwikcity/overview/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+- [GitHub Pages](https://pages.github.com/)
+
+---
+
+Built with ❤️ using Qwik and GitHub Copilot

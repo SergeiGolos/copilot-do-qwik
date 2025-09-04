@@ -60,6 +60,16 @@ export default component$(() => {
           </div>
         </div>
       </div>
+
+      {/* Corner Sticker - Star Repo */}
+      <a
+        href="https://github.com/SergeiGolos/copilot-do-qwik"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="fixed top-4 right-4 bg-yellow-400 text-black px-3 py-2 rounded-lg shadow-lg transform rotate-12 hover:rotate-0 transition-transform duration-300 z-20 font-semibold text-sm"
+      >
+        ⭐ Star Repo
+      </a>
     </div>
   );
 });

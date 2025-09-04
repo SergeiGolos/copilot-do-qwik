@@ -5,6 +5,7 @@
 import { defineConfig, type UserConfig } from "vite";
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import { qwikCity } from "@builder.io/qwik-city/vite";
+import { staticAdapter } from "@builder.io/qwik-city/adapters/static/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import pkg from "./package.json";
 import tailwindcss from "@tailwindcss/vite";
@@ -26,6 +27,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
       qwikVite(),
       tsconfigPaths({ root: "." }),
       tailwindcss(),
+      ...(command === "build" && mode === "production" ? [staticAdapter({ origin: 'https://SergeiGolos.github.io/copilot-do-qwik' })] : []),
     ],
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
