@@ -24,24 +24,19 @@ export default component$(() => {
             </p>
 
             {/* Getting Started Section */}            
-              <h2 class="text-2xl text-white font-bold mb-6 text-center">🚀 Getting Started Demo</h2>
+              <h2 class="text-2xl text-white font-bold mb-6 text-center">🚀 Getting Started</h2>
 
               {/* Bootstrap Agent - Full Width */}
               <div class="bg-white/10 rounded-xl p-6 backdrop-blur-sm border border-white/10 mb-6">
-                <div class="text-center mb-4">
-                  <div class="text-5xl mb-3">🏗️</div>
-                  <h3 class="text-white font-bold text-xl mb-2">Bootstrap Agent</h3>
-                  <p class="text-white/80 text-sm max-w-2xl mx-auto">
-                    Seeds foundational project context and establishes shared knowledge base
-                  </p>
-                </div>
-
-                <div class="bg-yellow-400/10 border border-yellow-400/20 rounded-lg p-4">
-                  <p class="text-yellow-200 font-semibold mb-2 text-center">✨ What the Bootstrap Agent Creates:</p>
-                  <p class="text-yellow-100/90 text-sm text-center">
-                    Complete .ground/ foundation with product vision, architecture, coding standards, and domain knowledge -
-                    establishing shared Long-Term Memory (LTM) and reducing cognitive load for your entire team.
-                  </p>
+                <div class="flex items-start gap-6">
+                  <div class="text-5xl flex-shrink-0">🏗️</div>
+                  <div class="flex-1 text-left">
+                    <h3 class="text-white font-bold text-xl mb-2">Bootstrap Agent</h3>
+                    <p class="text-white/80 text-sm">                  
+                      Complete .ground/ foundation with product vision, architecture, coding standards, and domain knowledge -
+                      establishing shared Long-Term Memory (LTM) and reducing cognitive load for your entire team.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -61,9 +56,11 @@ export default component$(() => {
                 <p class="text-white/60 text-xs mt-3">Foundational standards and shared project knowledge base.</p>
               </div>
 
+              {/* Getting Started Section */}            
+              <h2 class="text-2xl text-white font-bold mb-6 text-center">🎯 Development Workflow</h2>
+
               {/* Next Steps */}
-              <div class="bg-white/5 border border-white/10 rounded-lg p-4">
-                <h4 class="text-white font-semibold mb-2 text-center">🎯 After Bootstrap - Your Feature Development Flow</h4>
+              <div class="bg-white/5 border border-white/10 rounded-lg p-4">                
                 <div class="grid md:grid-cols-4 gap-3 text-xs">
                   <div class="text-center">
                     <div class="text-2xl mb-1">🧭</div>
