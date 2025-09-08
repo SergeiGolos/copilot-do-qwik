@@ -28,7 +28,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
       tsconfigPaths({ root: "." }),
       tailwindcss(),
       ...(command === "build" && mode === "production" ? [staticAdapter({
-        origin: 'https://SergeiGolos.github.io/copilot-do-qwik'
+        origin: 'https://copilot-do-qwik.golos.work'
       })] : []),
     ],
     // This tells Vite which dependencies to pre-build in dev mode.
