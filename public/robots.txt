@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://SergeiGolos.github.io/copilot-do-qwik/sitemap.xml

@@ -27,7 +27,9 @@ export default defineConfig(({ command, mode }): UserConfig => {
       qwikVite(),
       tsconfigPaths({ root: "." }),
       tailwindcss(),
-      ...(command === "build" && mode === "production" ? [staticAdapter({ origin: 'https://SergeiGolos.github.io/copilot-do-qwik' })] : []),
+      ...(command === "build" && mode === "production" ? [staticAdapter({
+        origin: 'https://SergeiGolos.github.io/copilot-do-qwik'
+      })] : []),
     ],
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
@@ -57,10 +59,11 @@ export default defineConfig(({ command, mode }): UserConfig => {
         "Cache-Control": "public, max-age=0",
       },
     },
-    preview: {
-      headers: {
-        // Do cache the server response in preview (non-adapter production build)
-        "Cache-Control": "public, max-age=600",
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
       },
     },
   };
